@@ -213,10 +213,10 @@ export default function Index() {
         {/* Stats */}
         <div className="reveal mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { n: "5M+", label: "Слушателей в мес." },
-            { n: "120+", label: "Концертов в год" },
-            { n: "8", label: "Лет на сцене" },
-            { n: "3", label: "Студийных альбома" },
+            { n: "200+", label: "Зрителей в год" },
+            { n: "5", label: "Концертов в год" },
+            { n: "5", label: "Лет на сцене" },
+            { n: "0", label: "Своих песен" },
           ].map((s) => (
             <div key={s.n} className="border border-white/10 p-6 hover:border-neon/50 transition-colors">
               <div className="font-['Oswald'] text-4xl font-bold text-neon mb-2">{s.n}</div>
