@@ -216,7 +216,7 @@ export default function Index() {
             { n: "200+", label: "Зрителей в год" },
             { n: "5", label: "Концертов в год" },
             { n: "5", label: "Лет на сцене" },
-            { n: "0", label: "Своих песен" },
+            { n: "0", label: "Своих песен (пока)" },
           ].map((s) => (
             <div key={s.n} className="border border-white/10 p-6 hover:border-neon/50 transition-colors">
               <div className="font-['Oswald'] text-4xl font-bold text-neon mb-2">{s.n}</div>
