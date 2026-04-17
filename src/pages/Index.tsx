@@ -4,7 +4,7 @@ import Icon from "@/components/ui/icon";
 const HERO_IMG = "https://cdn.poehali.dev/projects/9a8509ba-4403-41dd-9e18-45c3c97e5a7d/files/c4d973ed-7f5a-4c4e-8d4e-71e5bbcc7bb8.jpg";
 const CROWD_IMG = "https://cdn.poehali.dev/projects/9a8509ba-4403-41dd-9e18-45c3c97e5a7d/files/b3d25852-0396-400a-8fb2-f81aea5176c3.jpg";
 
-const SECTIONS = ["главная", "о нас", "туры", "билеты", "документы", "галерея", "контакты"];
+const SECTIONS = ["главная", "о нас", "туры", "документы", "галерея", "контакты"];
 
 const TOURS = [
   { city: "Петропавловск-Камчатский", venue: "КЗ Октябрьский", date: "16 МАЯ 2026 · 17:00", status: "доступно" },
@@ -144,16 +144,16 @@ export default function Index() {
             </div>
             <div className="flex flex-wrap gap-4 animate-fade-in-up animate-delay-400">
               <button
-                onClick={() => scrollTo("билеты")}
+                onClick={() => scrollTo("туры")}
                 className="bg-neon text-black font-['Oswald'] font-semibold text-sm tracking-widest uppercase px-8 py-3 hover:bg-white transition-colors duration-300 glow-neon"
               >
-                Купить билет
+                Все туры
               </button>
               <button
-                onClick={() => scrollTo("туры")}
+                onClick={() => scrollTo("контакты")}
                 className="border border-white/30 text-white font-['Oswald'] font-medium text-sm tracking-widest uppercase px-8 py-3 hover:border-neon hover:text-neon transition-colors duration-300"
               >
-                Все туры
+                Контакты
               </button>
             </div>
           </div>
@@ -268,45 +268,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* БИЛЕТЫ */}
-      <section ref={setRef("билеты")} className="py-28 px-6 max-w-7xl mx-auto">
-        <div className="reveal mb-14">
-          <p className="text-neon text-xs tracking-[0.4em] uppercase mb-3 font-['Oswald']">Купить</p>
-          <h2 className="font-['Oswald'] text-5xl md:text-7xl font-bold uppercase leading-none">БИЛЕТЫ</h2>
-        </div>
-        <div className="reveal grid md:grid-cols-3 gap-4">
-          {[
-            { tier: "Фанзона", price: "от 2 500 ₽", perks: ["Стоячий партер", "Близко к сцене", "Стандартный вход"], hot: false },
-            { tier: "VIP", price: "от 7 500 ₽", perks: ["Сидячие места", "Выделенный бар", "Ранний вход", "Встреча с артистом"], hot: true },
-            { tier: "Трибуны", price: "от 1 800 ₽", perks: ["Сидячие места", "Обзор всей сцены", "Стандартный вход"], hot: false },
-          ].map((b) => (
-            <div key={b.tier} className={`border p-8 flex flex-col relative overflow-hidden ${b.hot ? "border-neon glow-neon" : "border-white/10 hover:border-neon/30"} transition-all duration-300`}>
-              {b.hot && (
-                <div className="absolute top-0 right-0 bg-neon text-black font-['Oswald'] font-bold text-xs tracking-widest px-3 py-1">
-                  POPULAR
-                </div>
-              )}
-              <div className="font-['Oswald'] text-xs tracking-[0.3em] uppercase text-white/40 mb-3">{b.tier}</div>
-              <div className={`font-['Oswald'] text-4xl font-bold mb-6 ${b.hot ? "text-neon" : "text-white"}`}>{b.price}</div>
-              <ul className="space-y-2 mb-8 flex-1">
-                {b.perks.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-white/60 text-sm">
-                    <div className={`w-1 h-1 rounded-full ${b.hot ? "bg-neon" : "bg-white/30"}`} />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <button className={`font-['Oswald'] font-semibold text-sm tracking-widest uppercase py-3 transition-all duration-300 ${
-                b.hot
-                  ? "bg-neon text-black hover:bg-white"
-                  : "border border-white/20 text-white hover:border-neon hover:text-neon"
-              }`}>
-                Выбрать места
-              </button>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* ДОКУМЕНТЫ */}
       <section ref={setRef("документы")} className="py-28 bg-white/[0.02] border-y border-white/5">
