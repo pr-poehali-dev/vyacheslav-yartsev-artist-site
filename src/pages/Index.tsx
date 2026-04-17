@@ -328,10 +328,9 @@ export default function Index() {
             {/* Contact info */}
             <div className="space-y-6">
               {[
-                { icon: "Mail", label: "Буккинг и гастроли", value: "booking@klush.ru" },
-                { icon: "Phone", label: "Пресс-служба", value: "+7 (999) 000-00-00" },
-                { icon: "Globe", label: "Сайт", value: "klush.ru" },
-                { icon: "Instagram", label: "Instagram", value: "@klush_official" },
+                { icon: "Mail", label: "Email", value: "kamagency.cosmos41@mail.ru" },
+                { icon: "Phone", label: "Арт-директор Татьяна", value: "+7 914 627-32-42" },
+                { icon: "Users", label: "ВКонтакте", value: "vk.com/kamchatkamaestro_41" },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-4 group cursor-pointer">
                   <div className="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:border-neon group-hover:bg-neon/10 transition-all shrink-0">
