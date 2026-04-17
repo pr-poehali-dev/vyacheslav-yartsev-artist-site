@@ -232,7 +232,7 @@ export default function Index() {
           <div className="reveal mb-14 flex items-end justify-between flex-wrap gap-4">
             <div>
               <p className="text-neon text-xs tracking-[0.4em] uppercase mb-3 font-['Oswald']">Расписание</p>
-              <h2 className="font-['Oswald'] text-5xl md:text-7xl font-bold uppercase leading-none">ТУРЫ 2025</h2>
+              <h2 className="font-['Oswald'] text-5xl md:text-7xl font-bold uppercase leading-none">ТУРЫ 2026–2027</h2>
             </div>
             <div className="w-32 h-px bg-neon glow-neon" />
           </div>
