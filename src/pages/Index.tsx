@@ -169,7 +169,7 @@ export default function Index() {
       {/* TICKER */}
       <div className="bg-neon py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
-          {Array(8).fill("KLUSH — ВЯЧЕСЛАВ ЯРЦЕВ — НОВЫЙ ТУР 2025 — ").map((t, i) => (
+          {Array(8).fill("KLUSH — ВЯЧЕСЛАВ ЯРЦЕВ — НОВЫЙ ТУР 2026–2027 — ").map((t, i) => (
             <span key={i} className="text-black font-['Oswald'] font-bold text-sm tracking-widest uppercase mr-8">{t}</span>
           ))}
         </div>
