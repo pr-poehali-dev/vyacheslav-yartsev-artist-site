@@ -307,17 +307,11 @@ export default function Index() {
         </div>
         <div className="reveal grid grid-cols-2 md:grid-cols-3 gap-2">
           {GALLERY.map((g, i) => (
-            <div key={i} className={`relative overflow-hidden group cursor-pointer ${i === 0 ? "md:row-span-2" : ""}`}>
-              <img
-                src={g.src}
-                alt={g.label}
-                className={`w-full object-cover transition-transform duration-700 group-hover:scale-110 ${i === 0 ? "h-full min-h-[300px]" : "aspect-video"}`}
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span className="font-['Oswald'] text-sm tracking-widest uppercase text-white">{g.label}</span>
+            <div key={i} className="relative overflow-hidden group cursor-pointer aspect-video bg-white/5 border border-white/10 hover:border-neon/40 transition-colors flex items-center justify-center">
+              <Icon name="Image" size={28} className="text-white/20 group-hover:text-neon/40 transition-colors" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 border-t border-white/5">
+                <span className="font-['Oswald'] text-xs tracking-widest uppercase text-white/30 group-hover:text-white/60 transition-colors">{g.label}</span>
               </div>
-              <div className="absolute top-2 right-2 w-px h-8 bg-neon opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute top-2 right-2 h-px w-8 bg-neon opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
