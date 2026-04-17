@@ -342,6 +342,20 @@ export default function Index() {
                   </div>
                 </div>
               ))}
+
+              {/* Организация */}
+              <div className="border border-white/8 p-5 mt-2">
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon name="Building2" size={15} className="text-neon" />
+                  <span className="text-neon text-xs tracking-widest uppercase font-['Oswald']">Представитель организации</span>
+                </div>
+                <div className="font-['Oswald'] text-base font-semibold text-white mb-3">ООО «АГЕНТСТВО «КОСМОС»»</div>
+                <div className="space-y-1 text-white/40 text-xs font-['Golos_Text']">
+                  <div>ИНН: 4100057713</div>
+                  <div>ОГРН: 1264100000548</div>
+                  <div>КПП: 410001001</div>
+                </div>
+              </div>
             </div>
 
             {/* Form */}
