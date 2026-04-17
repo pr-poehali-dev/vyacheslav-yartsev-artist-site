@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Отправка заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Тест", "email": "test@test.ru", "subject": "Буккинг", "message": "Тестовое сообщение"},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

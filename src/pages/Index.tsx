@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, FormEvent } from "react";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/9a8509ba-4403-41dd-9e18-45c3c97e5a7d/bucket/6f6a5adf-f815-4966-8f76-27047653bef4.png";
@@ -34,6 +34,8 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState("главная");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
@@ -72,6 +74,26 @@ export default function Index() {
 
   const setRef = (key: string) => (el: HTMLElement | null) => {
     sectionsRef.current[key] = el;
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    try {
+      const res = await fetch("https://functions.poehali.dev/415e6e0f-967e-4c4c-a9b1-91eac529f8d1", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setFormStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -359,13 +381,16 @@ export default function Index() {
             </div>
 
             {/* Form */}
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs tracking-widest uppercase font-['Oswald'] text-white/40 mb-2 block">Имя</label>
                   <input
                     type="text"
                     placeholder="Ваше имя"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    required
                     className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/25 focus:outline-none focus:border-neon transition-colors text-sm"
                   />
                 </div>
@@ -374,6 +399,9 @@ export default function Index() {
                   <input
                     type="email"
                     placeholder="your@email.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    required
                     className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/25 focus:outline-none focus:border-neon transition-colors text-sm"
                   />
                 </div>
@@ -383,6 +411,8 @@ export default function Index() {
                 <input
                   type="text"
                   placeholder="Буккинг / Пресса / Сотрудничество"
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
                   className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/25 focus:outline-none focus:border-neon transition-colors text-sm"
                 />
               </div>
@@ -391,14 +421,28 @@ export default function Index() {
                 <textarea
                   rows={4}
                   placeholder="Расскажите о вашем запросе..."
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  required
                   className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-white/25 focus:outline-none focus:border-neon transition-colors text-sm resize-none"
                 />
               </div>
+              {formStatus === "success" && (
+                <div className="border border-neon/40 bg-neon/10 px-4 py-3 text-neon text-sm font-['Oswald'] tracking-wide">
+                  Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                </div>
+              )}
+              {formStatus === "error" && (
+                <div className="border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-400 text-sm font-['Oswald'] tracking-wide">
+                  Ошибка отправки. Попробуйте ещё раз или напишите напрямую.
+                </div>
+              )}
               <button
                 type="submit"
-                className="w-full bg-neon text-black font-['Oswald'] font-bold text-sm tracking-widest uppercase py-4 hover:bg-white transition-colors duration-300 glow-neon"
+                disabled={formStatus === "loading"}
+                className="w-full bg-neon text-black font-['Oswald'] font-bold text-sm tracking-widest uppercase py-4 hover:bg-white transition-colors duration-300 glow-neon disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Отправить
+                {formStatus === "loading" ? "Отправка..." : "Отправить"}
               </button>
             </form>
           </div>
